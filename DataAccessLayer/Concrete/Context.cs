@@ -13,6 +13,5 @@ namespace DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server=AB60013-0570;database=CoreBlogDb;integrated security=true;");
         }
-
     }
 }
