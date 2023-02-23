@@ -3,6 +3,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +26,12 @@ namespace DataAccessLayer.Repositories
             throw new NotImplementedException();
         }
 
-        public void Remove(Comment t)
+		public List<Comment> GetListAll(Expression<Func<Comment, bool>> filter)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Remove(Comment t)
         {
             throw new NotImplementedException();
         }

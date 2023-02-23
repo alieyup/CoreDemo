@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +29,12 @@ namespace DataAccessLayer.Repositories
             return c.Categories.ToList();
         }
 
-        public void Remove(Category category)
+		public List<Category> GetListAll(Expression<Func<Category, bool>> filter)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Remove(Category category)
         {
             c.Remove(category);
             c.SaveChanges();

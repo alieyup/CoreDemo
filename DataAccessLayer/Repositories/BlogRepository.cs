@@ -4,6 +4,7 @@ using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,5 +53,10 @@ namespace DataAccessLayer.Repositories
             using var c = new Context();
             return c.Blogs.ToList();
         }
-    }
+
+		public List<Blog> GetListAll(Expression<Func<Blog, bool>> filter)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
