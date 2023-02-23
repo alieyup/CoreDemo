@@ -13,6 +13,7 @@ namespace BusinessLayer.Concrete
     {
         IBlogDal _blogDal;
 
+
         public BlogManager(IBlogDal blogDal)
         {
             _blogDal = blogDal;
