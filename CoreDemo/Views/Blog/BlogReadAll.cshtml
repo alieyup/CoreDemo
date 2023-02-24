@@ -50,22 +50,9 @@
 					<a href="/Blog/Index" class="btn btn-primary read-m">Blog Listesi</a>
 				</div>
 				}
-		@*		@foreach (var item in Model)
-				{
-					if (item.Comments != null)
-					{
-*@
-						@await Component.InvokeAsync("CommentListByBlog",new {id=ViewBag.i})
-				@*	}
-					else
-					{
-						<h2>İlk Yorumu Siz Yapın!</h2>
-					}*@
-
-				}
-				@*@await Html.PartialAsync("~/Views/Comment/CommentListByBlog.cshtml")*@
-
-				@await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
+		
+			@await Component.InvokeAsync("CommentListByBlog",new {id=ViewBag.i})
+			@await Html.PartialAsync("~/Views/Comment/PartialAddComment.cshtml")
 
 
 			</div>

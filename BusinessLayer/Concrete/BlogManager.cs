@@ -13,13 +13,12 @@ namespace BusinessLayer.Concrete
     {
         IBlogDal _blogDal;
 
-
         public BlogManager(IBlogDal blogDal)
         {
             _blogDal = blogDal;
         }
 
-        public void BlogAdd(Blog blog)
+		public void BlogAdd(Blog blog)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +43,8 @@ namespace BusinessLayer.Concrete
         }
         public Blog GetById(int id)
         {
-            throw new NotImplementedException();
+           throw new NotImplementedException();
         }
+       
     }
 }

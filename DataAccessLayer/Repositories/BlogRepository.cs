@@ -13,13 +13,14 @@ namespace DataAccessLayer.Repositories
 {
     public class BlogRepository : IBlogDal
     {
-       
+
 
         public Blog GetById(int id)
         {
-
-            using var c = new Context();
-            return c.Blogs.Find(id);
+            using (var c = new Context())
+            {
+                return c.Blogs.Find(id); 
+            }
         }
 
         public void RemoveBlog(Blog blog)
