@@ -5,7 +5,7 @@
 		@foreach (var item in Model)
 		{
 			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<a asp-controller="Blog" asp-action="Category" asp-route-id="@item.CategoryID" asp-route-name="@item.CategoryName">	@item.CategoryName</a>
+				<a asp-controller="Blog" asp-action="Category" asp-route-id="@item.CategoryID">	@item.CategoryName</a>
 				<span class="badge badge-primary badge-pill">0</span>
 			</li>
 		} 
