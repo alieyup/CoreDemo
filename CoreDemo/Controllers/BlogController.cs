@@ -18,6 +18,7 @@ namespace CoreDemo.Controllers
             var values = bm.GetBlogByID(id);
 			return View(values);
 		}
+
         public JsonResult JsonResultBlogReadAll()
         {
             return Json(bm.GetAllBlogs());
