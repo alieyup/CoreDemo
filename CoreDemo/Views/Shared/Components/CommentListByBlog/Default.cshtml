@@ -11,7 +11,7 @@
 				<div class="media-body">
 					<h5 class="mt-0">
 						@item.CommentUserName
-						<br /> @item.CommentDate
+						<br /> @(((DateTime)item.CommentDate).ToString("dd-MMM-yyyy"))
 						<br />@item.CommentTitle
 					</h5>
 					<p>
