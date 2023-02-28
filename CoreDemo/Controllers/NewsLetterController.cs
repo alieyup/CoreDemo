@@ -20,5 +20,13 @@ namespace CoreDemo.Controllers
 			nm.AddNewsLetter(p);
 			return PartialView();
 		}
+		//[HttpPost]
+		//public IActionResult SubscribeMail(NewsLetter p)
+		//{
+		//	p.MailStatus = true;
+		//	nm.AddNewsLetter(p);
+		//	Response.Redirect("/Blog/BlogReadAll/" + 1);
+		//	return PartialView();
+		//}
 	}
 }
