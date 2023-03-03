@@ -20,7 +20,7 @@
 								<ul class="blog-icons my-4">
 									<li>
 										<a href="#">
-											<i class="far fa-calendar-alt"></i> @item.BlogCreateDate
+											<i class="far fa-calendar-alt"></i>  @(((DateTime)item.BlogCreateDate).ToString("dd MMMM yyyy"))
 										</a>
 									</li>
 									<li class="mx-2">
@@ -35,10 +35,12 @@
 									</li>
 								</ul>
 								<h5 class="card-title">
-									<a href="/Blog/BlogReadAll/@item.BlogID/">@item.BlogTitle</a>
+
+							@*		Hata verirse kısa karakterli (50 karakter) başlık vardır.*@
+									<a href="/Blog/BlogReadAll/@item.BlogID/">@item.BlogTitle.Substring(0,item.BlogTitle.Substring(0,40).LastIndexOf(" "))...</a>
 								</h5>
-								<p class="card-text mb-3">@item.BlogContent</p>
-								<a href="/Blog/BlogReadAll/@item.BlogID/" class="btn btn-primary read-m">Read More</a>
+								<p class="card-text mb-3">@item.BlogContent.Substring(0,item.BlogContent.Substring(0,106).LastIndexOf(" "))...</p>
+								<a href="/Blog/BlogReadAll/@item.BlogID/" class="btn btn-primary read-m">Devamını Oku</a>
 							</div>
 						</div>
 					}
