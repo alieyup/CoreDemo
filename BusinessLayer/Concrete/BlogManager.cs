@@ -37,6 +37,11 @@ namespace BusinessLayer.Concrete
         {
             return _blogDal.GetListAll();
         }
+        public List<Blog> GetLast3Blog()
+        {
+            //SON 3 KAYDI GETİRME BÖLÜMÜ
+            return _blogDal.GetListAll().Take(3).ToList();
+        }
         public List<Blog> GetBlogByID(int id)
         {
             return _blogDal.GetListAll(x => x.BlogID == id);
