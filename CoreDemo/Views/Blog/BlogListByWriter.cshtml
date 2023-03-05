@@ -19,7 +19,7 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.BlogID</td>
+            <th>@item.BlogID</th>
             <td>@item.BlogTitle</td>
             <td>@item.BlogCreateDate</td>
             <td>@item.CategoryID</td>
@@ -30,4 +30,4 @@
     }
 </table>
 
-<a  class="btn btn-gradient-success btn-icon-text"><i class="mdi mdi-file-plus btn-icon-prepend"></i> Yeni Blog Oluştur</a>
+<a class="btn btn-gradient-success btn-icon-text" asp-controller="Blog" asp-action="BlogAdd"><i class="mdi mdi-file-plus btn-icon-prepend"></i> Yeni Blog Oluştur</a>
