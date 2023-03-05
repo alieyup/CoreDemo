@@ -37,7 +37,7 @@
 								<h5 class="card-title">
 
 							@*		Hata verirse kısa karakterli (50 karakter) başlık vardır.*@
-									<a href="/Blog/BlogReadAll/@item.BlogID/">@item.BlogTitle.Substring(0,item.BlogTitle.Substring(0,40).LastIndexOf(" "))...</a>
+									<a href="/Blog/BlogReadAll/@item.BlogID/">@item.BlogTitle.Substring(0,item.BlogTitle.Substring(0,20).LastIndexOf(" "))...</a>
 								</h5>
 								<p class="card-text mb-3">@item.BlogContent.Substring(0,item.BlogContent.Substring(0,106).LastIndexOf(" "))...</p>
 								<a href="/Blog/BlogReadAll/@item.BlogID/" class="btn btn-primary read-m">Devamını Oku</a>

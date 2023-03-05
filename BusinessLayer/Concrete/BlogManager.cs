@@ -43,7 +43,7 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(Blog t)
         {
-            throw new NotImplementedException();
+            _blogDal.Add(t);
         }
 
         public void TRemove(Blog t)
