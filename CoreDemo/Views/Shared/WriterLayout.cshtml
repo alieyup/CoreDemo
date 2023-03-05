@@ -114,8 +114,10 @@
             <!-- partial -->
 
             <div class="main-panel">
-            @RenderBody()
 
+                <div class="content-wrapper">
+            @RenderBody()
+            </div>
                 @await Html.PartialAsync("~/Views/Writer/WriterFooterPartial.cshtml")
 
             </div>

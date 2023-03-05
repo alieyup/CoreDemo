@@ -9,7 +9,7 @@ namespace CoreDemo.Controllers
         BlogManager bm = new BlogManager(new EfBlogRepository());
         public IActionResult Index()
         {
-            var values = bm.GetAllBlogs();  
+            var values = bm.GetList();  
             return View(values);
         }
 		public IActionResult BlogReadAll(int id)
@@ -18,9 +18,15 @@ namespace CoreDemo.Controllers
             var values = bm.GetBlogByID(id);
 			return View(values);
 		}
+        public IActionResult BlogListByWriter()
+        {
+         var values=   bm.GetBlogListByWriter(1);
+            return View(values); 
+        }
+
         public JsonResult JsonResultBlogReadAll()
         {
-            return Json(bm.GetAllBlogs());
+            return Json(bm.GetList());
         }
 
 	}
