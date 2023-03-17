@@ -38,10 +38,13 @@ namespace BusinessLayer.Concrete
 
         public List<Blog> GetBlogListWithCategory()
         {
-            throw new NotImplementedException();
+            return _blogDal.GetListWithCategory();
         }
-
-        public void TAdd(Blog t)
+        public List<Blog> GetListCategoryByWriterBm(int id)
+        {
+            return _blogDal.GetlistWithCategoryByWriter(id);
+		}
+		public void TAdd(Blog t)
         {
             _blogDal.Add(t);
         }

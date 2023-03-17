@@ -59,5 +59,16 @@ namespace DataAccessLayer.Repositories
 		{
 			throw new NotImplementedException();
 		}
+
+		public List<Blog> GetListWithCategory()
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<Blog> GetlistWithCategoryByWriter(int id)
+		{
+            //buraya ef den alacan.
+			throw new NotImplementedException();
+		}
 	}
 }

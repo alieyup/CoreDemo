@@ -5,8 +5,9 @@
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
 
-<h1>Yazarın Blogları</h1>
-<table class="table table-bordered">
+<h1>Yazarın Bloglarıı</h1>
+<div class="col-lg-12 grid-margin stretch-card">
+<table class="table table-bordered table table-hover">
     <tr>
         <th>#</th>
         <th>Başlık</th>
@@ -21,13 +22,13 @@
         <tr>
             <th>@item.BlogID</th>
             <td>@item.BlogTitle</td>
-            <td>@item.BlogCreateDate</td>
-            <td>@item.CategoryID</td>
+            <td> @(((DateTime)item.BlogCreateDate).ToString("dd-MMM-yyyy"))</td>
+            <td><span class="badge badge-info">@item.Category.CategoryName</span></td>
             <td>@item.BlogStatus</td>
             <td><a href="#" class="btn btn-warning">Düzenle</a></td>
             <td><a href="#" class="btn btn-danger">Sil</a></td>
         </tr>
     }
 </table>
-
+</div>
 <a class="btn btn-gradient-success btn-icon-text" asp-controller="Blog" asp-action="BlogAdd"><i class="mdi mdi-file-plus btn-icon-prepend"></i> Yeni Blog Oluştur</a>

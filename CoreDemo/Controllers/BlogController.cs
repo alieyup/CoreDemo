@@ -24,8 +24,9 @@ namespace CoreDemo.Controllers
 		}
         public IActionResult BlogListByWriter()
         {
-         var values=   bm.GetBlogListByWriter(1);
-            return View(values);
+         var values=   bm.GetListCategoryByWriterBm(1);
+			//var values = bm.GetBlogListByWriter(1);
+			return View(values);
         }
         [HttpGet]
         public IActionResult BlogAdd()
