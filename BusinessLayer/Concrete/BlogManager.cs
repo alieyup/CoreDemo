@@ -30,9 +30,9 @@ namespace BusinessLayer.Concrete
         {
             return _blogDal.GetListAll(x => x.BlogID == id);
         }
-		public Blog GetById(int id)
+		public Blog TGetById(int id)
         {
-            //return _blogDal.GetListAll(x => x.BlogID == id);
+            return _blogDal.GetById(id);
             throw new NotImplementedException();
         }
 
@@ -51,7 +51,7 @@ namespace BusinessLayer.Concrete
 
         public void TRemove(Blog t)
         {
-            throw new NotImplementedException();
+            _blogDal.Remove(t);
         }
 
         public void TUpdate(Blog t)
