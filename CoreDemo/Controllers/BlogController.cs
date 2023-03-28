@@ -5,12 +5,14 @@ using EntityLayer.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Reflection.Metadata;
 
 namespace CoreDemo.Controllers
 {
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
+        CategoryManager cm = new CategoryManager(new EfCategoryRepository());
         public IActionResult Index()
         {
             var values = bm.GetList();  
@@ -31,8 +33,7 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult BlogAdd()
         {
-            CategoryManager cm = new CategoryManager (new EfCategoryRepository());
-            List<SelectListItem> categoryvalues=(from x in cm.GetList()
+           List<SelectListItem> categoryvalues=(from x in cm.GetList()
                                                  select new SelectListItem
                                                  {
                                                      Text = x.CategoryName,
@@ -41,11 +42,20 @@ namespace CoreDemo.Controllers
             ViewBag.cv = categoryvalues;
             return View();
         }
+
         [HttpPost]
         public IActionResult BlogAdd(Blog p)
         {
             BlogValidator bv = new BlogValidator();
             ValidationResult results = bv.Validate(p);
+
+            List<SelectListItem> categoryvalues = (from x in cm.GetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString(),
+                                                   }).ToList();
+            ViewBag.cv = categoryvalues;
             if (results.IsValid)
             {
                 p.BlogStatus = true;
@@ -69,6 +79,29 @@ namespace CoreDemo.Controllers
         {
             var blogvalue = bm.TGetById(id);
             bm.TRemove(blogvalue);
+            return RedirectToAction("BlogListByWriter");
+        }
+        [HttpGet]
+        public IActionResult EditBlog(int id)
+        {
+            var blogvalue=bm.TGetById(id);
+            List<SelectListItem> categoryvalues = (from x in cm.GetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString(),
+                                                   }).ToList();
+            ViewBag.cv = categoryvalues;
+            return View(blogvalue);
+        }
+        [HttpPost]
+        public IActionResult EditBlog(Blog p)
+        {
+            var blogToUpdate = bm.TGetById(p.BlogID);
+            p.WriterID = blogToUpdate.WriterID;
+            p.BlogCreateDate = blogToUpdate.BlogCreateDate;
+            p.BlogStatus = blogToUpdate.BlogStatus;
+            bm.TUpdate(p);
             return RedirectToAction("BlogListByWriter");
         }
 

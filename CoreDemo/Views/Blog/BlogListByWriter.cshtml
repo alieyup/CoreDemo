@@ -25,7 +25,7 @@
             <td><span class="badge badge-info">@item.Category.CategoryName</span></td>
                
             <td>@item.BlogStatus<td>
-                <a href="#" class="btn btn-warning">Düzenle</a></td>
+                <a href="/Blog/EditBlog/@item.BlogID" class="btn btn-warning">Düzenle</a></td>
             <td><a href="/Blog/DeleteBlog/@item.BlogID" onclick="return confirm('Silmek istediğine emin misin?');" class="btn btn-danger">Sil</a></td>
         </tr>
     }
