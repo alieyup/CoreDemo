@@ -7,8 +7,12 @@
 <h1>Yeni Blog Girişi</h1>
 @using(Html.BeginForm("BlogAdd","Blog", FormMethod.Post))
 {
-    @Html.Label("Blog Başlığı")
+    //@Html.Label("Blog Başlığı")
+    <label asp-for="BlogTitle">@Html.DisplayNameFor(x=>x.BlogTitle)</label>
     @Html.TextBoxFor(x=>x.BlogTitle, new {@class="form-control"})
+    <input asp-for="BlogTitle" class="form-control"/>
+    <span asp-validation-for="BlogTitle" class="text-danger"></span>
+
     @Html.ValidationMessageFor(x=>x.BlogTitle)
     <br />
     @Html.Label("Blog Küçük Görsel")

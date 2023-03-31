@@ -13,6 +13,8 @@ namespace EntityLayer.Concrete
 
         [Key]
         public int BlogID { get; set; }
+        [Display(Name ="Blog Konusu")]
+        [Required(ErrorMessage ="{0} gereklidir.")]
         public string BlogTitle { get; set; }
         public string BlogContent { get; set; }
         public string BlogThumbnailImage { get; set; }
