@@ -4,9 +4,12 @@
     ViewData["Title"] = "BlogAdd";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
-<h1>Yeni Blog Girişi</h1>
 @using(Html.BeginForm("BlogAdd","Blog", FormMethod.Post))
 {
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yeni Blog Ekleme</h4>
     //@Html.Label("Blog Başlığı")
     <label asp-for="BlogTitle">@Html.DisplayNameFor(x=>x.BlogTitle)</label>
     @Html.TextBoxFor(x=>x.BlogTitle, new {@class="form-control"})
@@ -31,4 +34,5 @@
     @Html.ValidationMessageFor(x=>x.BlogContent)
     <br />
     <button type="submit" class="btn btn-gradient-success btn-icon-text"><i class="mdi mdi-file-plus btn-icon-prepend"></i>Yazıyı Ekle</button>
+    </div></div></div>
 }
