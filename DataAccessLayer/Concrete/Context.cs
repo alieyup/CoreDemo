@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class Context:DbContext
+    public class Context : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           optionsBuilder.UseSqlServer("server=AB60013-0570;database=CoreBlogDb;integrated security=true;TrustServerCertificate=True");
-           //  optionsBuilder.UseSqlServer("server=ALI\\SQLEXPRESS;database=CoreBlogDb;integrated security=true;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("server=AB60013-0570;database=CoreBlogDb;integrated security=true;TrustServerCertificate=True");
+            //  optionsBuilder.UseSqlServer("server=ALI\\SQLEXPRESS;database=CoreBlogDb;integrated security=true;TrustServerCertificate=True");
         }
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
@@ -23,5 +23,8 @@ namespace DataAccessLayer.Concrete
         public DbSet<Writer> Writers { get; set; }
         public DbSet<NewsLetter> NewsLetters { get; set; }
         public DbSet<BlogRating> BlogRaitings { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
+
+
     }
 }
