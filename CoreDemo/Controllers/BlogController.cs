@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFreamwork;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -26,8 +27,10 @@ namespace CoreDemo.Controllers
 		}
         public IActionResult BlogListByWriter()
         {
-         var values=   bm.GetListCategoryByWriterBm(1);
-			//var values = bm.GetBlogListByWriter(1);
+            var usermail = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
+            var values=   bm.GetListCategoryByWriterBm(writerid);
 			return View(values);
         }
         [HttpGet]
@@ -48,6 +51,9 @@ namespace CoreDemo.Controllers
         {
             BlogValidator bv = new BlogValidator();
             ValidationResult results = bv.Validate(p);
+            var usermail = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
 
             List<SelectListItem> categoryvalues = (from x in cm.GetList()
                                                    select new SelectListItem
@@ -61,7 +67,7 @@ namespace CoreDemo.Controllers
                 p.BlogStatus = true;
                 p.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
                 p.BlogThumbnailImage = "/image/1.jpg";
-                p.WriterID=1;
+                p.WriterID= writerid;
                 bm.TAdd(p);
                 return RedirectToAction("BlogListByWriter", "Blog");
             }
@@ -97,8 +103,11 @@ namespace CoreDemo.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog p)
         {
+            var usermail = User.Identity.Name;
+            Context c = new Context();
+            var writerid = c.Writers.Where(x => x.WriterMail == usermail).Select(y => y.WriterID).FirstOrDefault();
             var blogToUpdate = bm.TGetById(p.BlogID);
-            p.WriterID = blogToUpdate.WriterID;
+            p.WriterID = writerid;
             p.BlogCreateDate = blogToUpdate.BlogCreateDate;
             p.BlogStatus = blogToUpdate.BlogStatus;
             bm.TUpdate(p);

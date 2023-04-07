@@ -1,0 +1,26 @@
+﻿@model EntityLayer.Concrete.Message2
+@{
+    ViewData["Title"] = "MessageDetails";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+<br />
+@using (Html.BeginForm("InBox", "Message", FormMethod.Post))
+{
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Mesaj Detay
+                    </h4>
+                      <label for="exampleInputName1">Mesaj ID</label>
+                     
+                    <input type="text" class="form-control" asp-for="MessageID" placeholder="Name">
+                  <label for="exampleInputName1">Mesaj Başlığı</label>
+                     <input type="text" class="form-control" asp-for="Subject" placeholder="Name">
+                       <label for="exampleInputName1">Mesaj İçeriği</label>
+                     <input type="text" class="form-control" asp-for="Messagedetails" placeholder="Name">
+                <br />
+                <button type="submit" class="btn btn-gradient-success btn-icon-text"><i class="mdi mdi-file-plus btn-icon-prepend"></i>Tüm Mesajlar</button>
+            </div>
+        </div>
+    </div>
+}
