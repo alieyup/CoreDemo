@@ -1,0 +1,63 @@
+﻿@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+	<div class="card">
+		<div class="card-body">
+			<h4 class="card-title">Yazar Ajax İşlemleri</h4>
+			<button type="button" id="btngetlist" class="btn btn-outline-primary">Yazar Listesi</button>
+			<br />
+			<div id="writerlist"></div>
+			<hr />
+			<br />
+			<div><input type="text" id="writerid" placeholder="Yazar ID değerini girin!" class="form-control" /></div>
+			<br />
+			<button type="button" id="btngetbyid" class="btn btn-outline-success">Yazarı Getir</button>
+			<br />
+			<div id="writerget"></div>
+		</div>
+	</div>
+</div>
+@section scripts{
+
+	<script>
+		$("#btngetlist").click(function () {
+			$.ajax({
+				contentType: "application/json",
+				dataType: "json",
+				type: "Get",
+				url: "/Admin/Writer/WriterList/",
+				success: function (func) {
+					let w = jQuery.parseJSON(func);
+					console.log(w);
+					let tablehtml = "<table class='table'> <thead><tr><th>Yazar ID </th><th> Yazar Adı</th></tr></thead>";
+					$.each(w, (index, value) => {
+						tablehtml += `<tr><td>${value.Id}</td><td>${value.Name}</td></tr>`
+					});
+					tablehtml += "</table>";
+					$("#writerlist").html(tablehtml);
+				}
+			})
+		})
+		$("#btngetbyid").click(x => {
+			let id = $("#writerid").val();
+			$.ajax({
+				contentType:"application/json",
+				datatype:"json",
+				type:"get",
+				url:"/Admin/Writer/GetWriterByID/",
+				data:{writerid:id},
+				success:function(func){
+					let w = jQuery.parseJSON(func);
+					console.log(w);
+					let getValue = `<table class="table table-bordered"> <tr> <th>Yazar Id</th> <th>Yazar Adı</th></tr>
+										<tr><td>${w.Id}</td> <td>${w.Name}</td></tr></table>`
+					$("#writerget").html(getValue);
+				}
+			});
+		});
+
+	</script>
+}
