@@ -13,7 +13,7 @@ namespace DataAccessLayer.Concrete
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=AB60013-0570;database=CoreBlogDb;integrated security=true;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("server=AB60013-1571;database=CoreBlogDb;integrated security=true;TrustServerCertificate=True");
             //  optionsBuilder.UseSqlServer("server=ALI\\SQLEXPRESS;database=CoreBlogDb;integrated security=true;TrustServerCertificate=True");
         }
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
