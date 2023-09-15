@@ -1,0 +1,48 @@
+﻿@model UserSignUpViewModel
+
+@{
+    Layout = null;
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mt-5 mb-4 text-center">Kullanıcı Kaydı</h2>
+
+            <form asp-action="Register" method="post">
+                <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="NameSurname" class="form-label">Ad Soyad</label>
+                    <input asp-for="NameSurname" class="form-control" />
+                    <span asp-validation-for="NameSurname" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label">Şifre</label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ConfirmPassword" class="form-label">Şifre Tekrar</label>
+                    <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Mail" class="form-label">Mail Adresi</label>
+                    <input asp-for="Mail" class="form-control" />
+                    <span asp-validation-for="Mail" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydol</button>
+            </form>
+        </div>
+    </div>
+</div>

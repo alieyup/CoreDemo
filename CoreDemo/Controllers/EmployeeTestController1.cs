@@ -66,6 +66,9 @@ namespace CoreDemo.Controllers
             {
                 return RedirectToAction("Index");
             }
+            
+            ViewBag.ErrorMessage = "Çalışanı silme işlemi başarısız oldu. Lütfen tekrar deneyin.";
+
             return View();
         }
         public class Class1
